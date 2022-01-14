@@ -1,4 +1,4 @@
-const router = require('express');
+const router = require('express').Router();
 
 const bcrypt = require('bcrypt');
 const mongoose = require('mongoose');
@@ -10,20 +10,20 @@ const User = require('../../models/User.model');
 const isLoggedOut = require('../../middleware/isLoggedOut');
 const isLoggedIn = require('../../middleware/isLoggedIn');
 
-router.get('/signup', isLoggedOut, (req, res) => {
-  res.render('auth/signup');
+router.get("/signup", isLoggedOut, (req, res) => {
+  res.render("auth/signup")
 });
 
 router.post('/signup', isLoggedOut, (req, res) => {
   const { username, password } = req.body;
 
-  if(!username) {
-    return res.status(400).render('auth/signup', {
-      errorMessage: 'Please provide your username.',
-    });
+  if (!username) {
+    return res
+      .status(400)
+      .render('auth/signup', { errorMessage: 'Please provide your username.' });
   }
 
-  if(password.length < 8) {
+  if (password.length < 8) {
     return res.status(400).render('auth/signup', {
       errorMessage: 'Your password needs to be at least 8 characters long.',
     });
@@ -31,9 +31,9 @@ router.post('/signup', isLoggedOut, (req, res) => {
 
   User.findOne({ username }).then((found) => {
     if (found) {
-      return res.status(400).render('auth/signup', {
-        errorMessage: 'Username already taken.',
-      });
+      return res
+        .status(400)
+        .render('auth/signup', { errorMessage: 'Username already taken.'});
     }
 
     return bcrypt
@@ -41,7 +41,7 @@ router.post('/signup', isLoggedOut, (req, res) => {
       .then((salt) => bcrypt.hash(password, salt))
       .then((hashedPassword) => {
         return User.create({
-          username,
+          username, 
           password: hashedPassword,
         });
       })
@@ -55,7 +55,7 @@ router.post('/signup', isLoggedOut, (req, res) => {
             .status(400)
             .render('auth/signup', { errorMessage: error.message });
         }
-        if(error.code === 11000) {
+        if (error.code === 11000) {
           return res.status(400).render('auth/signup', {
             errorMessage: 'Username needs to be unique. The username you chose is already in use.',
           });

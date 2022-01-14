@@ -1,15 +1,15 @@
 require('dotenv').config();
 
-const bodyParser   = require('body-parser');
-const cookieParser = require('cookie-parser');
-const express      = require('express');
-const favicon      = require('serve-favicon');
-const hbs          = require('hbs');
-const mongoose     = require('mongoose');
-const logger       = require('morgan');
-const path         = require('path');
-const session = require('express-session');
-const MongoStore = require('connect-mongo');
+const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
+const express = require("express");
+const favicon = require("serve-favicon");
+const hbs = require("hbs");
+const mongoose = require("mongoose");
+const logger = require("morgan");
+const path = require("path");
+const session = require("express-session");
+const MongoStore = require("connect-mongo");
 
 
 mongoose
@@ -69,9 +69,9 @@ app.use((req, res, next) => {
 });
 
 
-const index = require('./routes/index');
-app.use('/', index);
-app.use('auth', require('./routes/auth-routes/auth'));
+const index = require("./routes/index");
+app.use("/", index);
+app.use("/auth", require("./routes/auth-routes/auth"));
 
 
 module.exports = app;
