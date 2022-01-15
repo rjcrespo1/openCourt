@@ -1,7 +1,8 @@
 const { Schema, model } = require('mongoose');
 
-const courtSchema = new Schema(
+const parkSchema = new Schema(
   {
+    name: { type: String, required: true},
     location: String,
     numberOfCourts: Number,
     playersAtLocation: Number,
@@ -13,6 +14,6 @@ const courtSchema = new Schema(
   }
 );
 
-const Court = model('Court', courtSchema);
+const Park = model('Park', parkSchema);
 
-module.exports = Court;
+module.exports = Park;

@@ -5,7 +5,6 @@ const gameSchema = new Schema(
     rules: String,
     teamsSize: Number,
     startTime: String,
-    
   }
 );
 
