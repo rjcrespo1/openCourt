@@ -16,14 +16,14 @@ router.get("/signup", isLoggedOut, (req, res) => {
 
 router.post('/signup', isLoggedOut, (req, res) => {
   const { username, password } = req.body;
-
+  
   if (!username) {
     return res
-      .status(400)
-      .render('auth/signup', { errorMessage: 'Please provide your username.' });
+    .status(400)
+    .render('auth/signup', { errorMessage: 'Please provide your username.' });
   }
-
   if (password.length < 8) {
+    console.log('user auth: ', req.body)
     return res.status(400).render('auth/signup', {
       errorMessage: 'Your password needs to be at least 8 characters long.',
     });

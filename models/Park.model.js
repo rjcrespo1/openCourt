@@ -6,7 +6,8 @@ const parkSchema = new Schema(
     location: String,
     numberOfCourts: Number,
     playersAtLocation: Number,
-    indoorsOrOutdoors: String,
+    parkFeatures: String,
+    parkComments: [{ type: Schema.Types.ObjectId, ref: 'Comment'}]
   },
 
   {
