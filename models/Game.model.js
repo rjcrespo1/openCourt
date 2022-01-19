@@ -2,9 +2,13 @@ const { Schema, model } = require('mongoose');
 
 const gameSchema = new Schema(
   {
-    rules: String,
-    teamsSize: Number,
     startTime: String,
+    park: {type: Schema.Types.ObjectId, ref: 'Park'},
+    
+  },
+
+  {
+    timestamps: true,
   }
 );
 
