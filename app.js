@@ -72,7 +72,8 @@ app.use((req, res, next) => {
 const index = require("./routes/index");
 app.use("/", index);
 app.use("/auth", require("./routes/auth-routes/auth"));
-// app.use('/park')
+app.use("/park", require("./routes/park-routes/park"));
+// app.use("/game", require("./routes/game-routes/game"));
 
 
 module.exports = app;

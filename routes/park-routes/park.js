@@ -8,7 +8,9 @@ const User = require('../../models/User.model');
 // const isLoggedOut = require('../../middleware/isLoggedOut');
 
 router.get('/', (req, res, next) => {
-  if (!req.session.user) {
+  console.log('==== ROUTE HIT ====')
 
-  }
-})
+  res.render('park/parks')
+});
+
+module.exports = router;
