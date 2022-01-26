@@ -3,16 +3,16 @@ const { Schema, model } = require('mongoose');
 const parkSchema = new Schema(
   {
     name: { type: String, required: true},
-    location: String,
+    location: { type: { type: String }, coordinates: [Number] },
     numberOfCourts: Number,
-    playersAtLocation: Number,
-    parkFeatures: String,
   },
 
   {
     timestamps: true,
   }
 );
+
+// parkSchema.index({ location: '2dsphere' });
 
 const Park = model('Park', parkSchema);
 

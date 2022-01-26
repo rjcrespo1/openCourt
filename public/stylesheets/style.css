@@ -34,4 +34,8 @@ body {
     body nav h4 {
       color: darkslateblue; }
 
+#map {
+  width: 50%;
+  height: 400px; }
+
 /*# sourceMappingURL=style.css.map */

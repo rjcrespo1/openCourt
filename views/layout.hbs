@@ -25,6 +25,8 @@
     </div>
   </nav>
 
+
+
   <div>
     <a href="/park">Search for a park near you</a>
   </div>
@@ -34,6 +36,9 @@
   </div>
 
   <script src="/javascripts/script.js"></script>
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key={{process.env.API_KEY}}&libraries=places&callback=initMap">
+</script>
 </body>
 
 </html>
