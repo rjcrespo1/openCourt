@@ -15,7 +15,17 @@ router.get('/', isLoggedIn, (req, res, next) => {
 });
 
 router.post('/', (req, res, next) => {
-  const newGame = new Game
+  const newGame = new Game({
+    startTime,
+    park,
+    user
+  })
+
+  newGame
+    .save()
+    .then(game => {
+      res.redirect('/')
+    })
 })
 
 
