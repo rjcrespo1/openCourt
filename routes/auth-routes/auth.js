@@ -47,6 +47,7 @@ router.post('/signup', isLoggedOut, (req, res) => {
       })
       .then((user) => {
         req.session.user = user;
+        console.log('new user created', user);
         res.redirect('/');
       })
       .catch((error) => {
