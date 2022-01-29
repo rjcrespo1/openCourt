@@ -17,6 +17,17 @@ window.addEventListener('load', () => {
 });
 
 
+const myMarker = new google.maps.Marker({
+  position: {
+    lat: 26.299670717734262,
+    lng: -80.26497659389632
+  },
+  map: map,
+  title: "Random Park"
+});
+
+
+
 function getParks() {
   axios
     .get('/parks/api')

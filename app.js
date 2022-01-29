@@ -63,17 +63,17 @@ app.use(
 // default value for title local
 app.locals.title = 'Express - Generated with IronGenerator';
 
+app.locals.key = process.env.API_KEY || 'nothing';
 app.use((req, res, next) => {
   app.locals.currentUser = req.session.user ? req.session.user : false;
   next();
 });
 
-
 const index = require("./routes/index");
 app.use("/", index);
 app.use("/auth", require("./routes/auth-routes/auth"));
 app.use("/park", require("./routes/park-routes/park"));
-// app.use("/game", require("./routes/game-routes/game"));
+app.use("/game", require("./routes/game-routes/game"));
 
 
 module.exports = app;

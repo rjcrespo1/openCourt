@@ -12,7 +12,7 @@ const parkSchema = new Schema(
   }
 );
 
-// parkSchema.index({ location: '2dsphere' });
+parkSchema.index({ location: '2dsphere' });
 
 const Park = model('Park', parkSchema);
 
