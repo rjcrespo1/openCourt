@@ -14,11 +14,12 @@ router.get('/', isLoggedIn, (req, res, next) => {
   res.render('game/games')
 });
 
-router.post('/', (req, res, next) => {
+router.post('/', isLoggedIn, (req, res, next) => {
   const newGame = new Game({
-    startTime,
-    park,
-    user
+    date: req.body.date,
+    startTime: req.body.time,
+    parkAddress: req.body.parkAddress,
+    user: req.user._id
   })
 
   newGame
@@ -26,7 +27,10 @@ router.post('/', (req, res, next) => {
     .then(game => {
       res.redirect('/')
     })
-})
+    .catch(error => {
+      next(error);
+    });
+});
 
 
 
